@@ -37,7 +37,7 @@
 #include "mate-colorsel.h"
 #include "mate-hsv.h"
 
-#define DEFAULT_COLOR_PALETTE "#ef2929:#fcaf3e:#fce94f:#8ae234:#729fcf:#ad7fa8:#e9b96e:#888a85:#eeeeec:#cc0000:#f57900:#edd400:#73d216:#3465a4:#75507b:#c17d11:#555753:#d3d7cf:#a40000:#ce5c00:#c4a000:#4e9a06:#204a87:#5c3566:#8f5902:#2e3436:#babdb6:#000000:#2e3436:#555753:#888a85:#babdb6:#d3d7cf:#eeeeec:#f3f3f3:#ffffff"
+#define DEFAULT_COLOR_PALETTE "#FF0000:#FF2A00:#FF5500:#FF8000:#FFAA00:#FFD500:#FFFF00:#D4FF00:#AAFF00:#80FF00:#55FF00:#2AFF00:#00FF00:#00FF2A:#00FF55:#00FF80:#00FFAA:#00FFD4:#00FFFF:#00D4FF:#00AAFF:#0080FF:#0055FF:#002BFF:#0000FF:#2A00FF:#5500FF:#8000FF:#AA00FF:#D500FF:#FF00FF:#FF00D4:#FF00AA:#FF0080:#FF0055:#FF002B"
 
 /* Number of elements in the custom palatte */
 #define GTK_CUSTOM_PALETTE_WIDTH 9
@@ -205,10 +205,10 @@ static void shutdown_eyedropper (GtkWidget *widget);
 
 static guint color_selection_signals[LAST_SIGNAL] = { 0 };
 
+static gchar color_palette[SIZE_OF_COLOR_PALETTE] = { 0 };
+
 static MateColorSelectionChangePaletteFunc noscreen_change_palette_hook = default_noscreen_change_palette_func;
 static MateColorSelectionChangePaletteWithScreenFunc change_palette_hook = default_change_palette_func;
-
-static gchar color_palette[SIZE_OF_COLOR_PALETTE] = { 0 };
 
 static const guchar dropper_bits[] = {
 "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
@@ -450,8 +450,8 @@ mate_color_selection_init (MateColorSelection *colorsel)
 
   /* Set up the palette */
   grid = gtk_grid_new ();
-  gtk_grid_set_row_spacing (GTK_GRID (grid), 1);
-  gtk_grid_set_column_spacing (GTK_GRID (grid), 1);
+  gtk_grid_set_row_spacing (GTK_GRID (grid), 3);
+  gtk_grid_set_column_spacing (GTK_GRID (grid), 3);
   for (i = 0; i < GTK_CUSTOM_PALETTE_WIDTH; i++)
     {
       for (j = 0; j < GTK_CUSTOM_PALETTE_HEIGHT; j++)
